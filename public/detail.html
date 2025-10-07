@@ -1,267 +1,30 @@
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Charity Events | Details</title>
-    <!-- Added external resources -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    
-    <!-- Custom Tailwind configuration -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#2563eb',
-              secondary: '#10b981',
-              accent: '#f59e0b',
-            },
-            fontFamily: {
-              sans: ['Inter', 'system-ui', 'sans-serif'],
-            },
-          },
-        }
-      }
-    </script>
-    
-    <!-- Custom utilities -->
-    <style type="text/tailwindcss">
-      @layer utilities {
-        .content-auto {
-          content-visibility: auto;
-        }
-        .card-hover {
-          @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
-  
-  <body class="bg-gray-50 font-sans text-gray-800">
-    <header class="site-header fixed w-full bg-white/95 shadow-sm z-50 transition-all duration-300">
-      <div class="container nav mx-auto px-4 py-3 flex items-center justify-between">
-        <div class="logo text-2xl font-bold text-primary flex items-center">
-          <i class="fa fa-heart-o mr-2 text-accent"></i>
-          <span>City Charity</span>
-        </div>
-        
-        <nav class="hidden md:flex space-x-6">
-          <a href="/" class="text-gray-600 hover:text-primary transition-colors">Home</a>
-          <a href="/search.html" class="text-gray-600 hover:text-primary transition-colors">Search Events</a>
-          <a href="#" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-colors">Contact</a>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <div class="logo">City Charity</div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/search.html">Search Events</a>
         </nav>
-        
-        <!-- Mobile menu button -->
-        <button id="menuBtn" class="md:hidden text-gray-600 focus:outline-none">
-          <i class="fa fa-bars text-xl"></i>
-        </button>
-      </div>
-      
-      <!-- Mobile navigation -->
-      <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
-        <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-          <a href="/" class="text-gray-600 hover:text-primary transition-colors py-2">Home</a>
-          <a href="/search.html" class="text-gray-600 hover:text-primary transition-colors py-2">Search Events</a>
-          <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg text-center">Contact</a>
-        </div>
       </div>
     </header>
 
-    <main class="container mx-auto px-4 pt-24 pb-16">
-      <!-- Breadcrumb navigation -->
-      <div class="text-sm text-gray-500 mb-6">
-        <a href="/" class="hover:text-primary">Home</a> 
-        <span class="mx-2">/</span> 
-        <a href="/search.html" class="hover:text-primary">Events</a>
-        <span class="mx-2">/</span>
-        <span class="text-gray-700">Event Details</span>
-      </div>
-      
-      <div id="detail" class="bg-white rounded-xl shadow-md overflow-hidden">
-        <!-- Event hero image -->
-        <div class="relative h-[300px] md:h-[400px] overflow-hidden">
-          <img src="https://picsum.photos/1200/400?random=1" alt="Charity event banner showing volunteers helping people" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-            <div class="p-6 md:p-8 text-white">
-              <span class="inline-block bg-accent px-3 py-1 rounded-full text-sm font-medium mb-3">Community</span>
-              <h1 class="text-[clamp(1.5rem,4vw,2.5rem)] font-bold mb-2">Annual Food Drive for Families in Need</h1>
-              <div class="flex flex-wrap items-center gap-4">
-                <div class="flex items-center">
-                  <i class="fa fa-calendar-o mr-2"></i>
-                  <span>June 15, 2025</span>
-                </div>
-                <div class="flex items-center">
-                  <i class="fa fa-map-marker mr-2"></i>
-                  <span>Community Center, Main Street</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8 p-6 md:p-8">
-          <div class="md:col-span-2 space-y-6">
-            <section>
-              <h2 class="text-2xl font-bold text-gray-800 mb-4">About This Event</h2>
-              <p class="text-gray-600 leading-relaxed">
-                Our annual food drive aims to collect and distribute essential food items to families facing hardship in our community. Last year, we helped over 500 families with nutritious meals during difficult times.
-              </p>
-              <p class="text-gray-600 leading-relaxed mt-3">
-                This year, we're expanding our efforts to reach even more families. We need volunteers to help with collection, sorting, and distribution of food items. All donated items will be distributed through local food banks and community organizations.
-              </p>
-            </section>
-            
-            <section>
-              <h2 class="text-2xl font-bold text-gray-800 mb-4">What to Bring</h2>
-              <ul class="space-y-2 text-gray-600">
-                <li class="flex items-start">
-                  <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
-                  <span>Non-perishable food items (canned goods, rice, pasta, etc.)</span>
-                </li>
-                <li class="flex items-start">
-                  <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
-                  <span>Personal hygiene products</span>
-                </li>
-                <li class="flex items-start">
-                  <i class="fa fa-check-circle text-secondary mt-1 mr-2"></i>
-                  <span>Volunteers should bring water bottles and wear comfortable clothing</span>
-                </li>
-              </ul>
-            </section>
-            
-            <section>
-              <h2 class="text-2xl font-bold text-gray-800 mb-4">Schedule</h2>
-              <div class="space-y-4">
-                <div class="border-l-4 border-primary pl-4 py-1">
-                  <h3 class="font-semibold">9:00 AM - 10:00 AM</h3>
-                  <p class="text-gray-600">Volunteer check-in and orientation</p>
-                </div>
-                <div class="border-l-4 border-primary pl-4 py-1">
-                  <h3 class="font-semibold">10:00 AM - 12:00 PM</h3>
-                  <p class="text-gray-600">Food collection and sorting</p>
-                </div>
-                <div class="border-l-4 border-primary pl-4 py-1">
-                  <h3 class="font-semibold">1:00 PM - 4:00 PM</h3>
-                  <p class="text-gray-600">Food distribution to families</p>
-                </div>
-              </div>
-            </section>
-          </div>
-          
-          <div class="space-y-6">
-            <div class="bg-gray-50 rounded-lg p-6">
-              <h3 class="text-xl font-bold mb-4">Event Information</h3>
-              
-              <div class="space-y-4 text-gray-600">
-                <div>
-                  <h4 class="font-semibold text-gray-800">Date & Time</h4>
-                  <p class="flex items-center mt-1">
-                    <i class="fa fa-calendar mr-2 text-primary"></i>
-                    Saturday, June 15, 2025<br>
-                    <span class="ml-6">9:00 AM - 4:00 PM</span>
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 class="font-semibold text-gray-800">Location</h4>
-                  <p class="flex items-start mt-1">
-                    <i class="fa fa-map-marker mr-2 text-primary mt-1"></i>
-                    Community Center<br>
-                    123 Main Street<br>
-                    Cityville, ST 12345
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 class="font-semibold text-gray-800">Contact</h4>
-                  <p class="flex items-center mt-1">
-                    <i class="fa fa-envelope mr-2 text-primary"></i>
-                    events@citycharity.org
-                  </p>
-                  <p class="flex items-center mt-1">
-                    <i class="fa fa-phone mr-2 text-primary"></i>
-                    (123) 456-7890
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div class="sticky top-24">
-              <a href="#" class="block w-full bg-secondary hover:bg-secondary/90 text-white text-center py-3 px-4 rounded-lg font-medium transition-colors mb-3">
-                <i class="fa fa-calendar-plus-o mr-2"></i>Register to Attend
-              </a>
-              <a href="#" class="block w-full bg-primary hover:bg-primary/90 text-white text-center py-3 px-4 rounded-lg font-medium transition-colors">
-                <i class="fa fa-hand-paper-o mr-2"></i>Sign Up as Volunteer
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <main class="container">
+      <div id="detail"></div>
     </main>
 
-    <footer class="site-footer bg-gray-800 text-white py-8">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-          <div class="mb-4 md:mb-0">
-            <div class="text-xl font-bold flex items-center">
-              <i class="fa fa-heart-o mr-2 text-accent"></i>
-              <span>City Charity</span>
-            </div>
-            <p class="text-gray-400 mt-2">Helping our community since 2010</p>
-          </div>
-          <div class="flex space-x-6">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fa fa-facebook"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fa fa-twitter"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fa fa-instagram"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fa fa-linkedin"></i>
-            </a>
-          </div>
-        </div>
-        <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
-          © 2025 City Charity. All rights reserved.
-        </div>
-      </div>
+    <footer class="site-footer">
+      <div class="container">© 2025 City Charity</div>
     </footer>
 
-    <script type="module">
-      // Mobile menu toggle functionality
-      const menuBtn = document.getElementById('menuBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-      
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        const icon = menuBtn.querySelector('i');
-        if (mobileMenu.classList.contains('hidden')) {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        } else {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-times');
-        }
-      });
-      
-      // Header scroll effect
-      window.addEventListener('scroll', () => {
-        const header = document.querySelector('.site-header');
-        if (window.scrollY > 50) {
-          header.classList.add('py-2', 'shadow');
-          header.classList.remove('py-3');
-        } else {
-          header.classList.add('py-3');
-          header.classList.remove('py-2', 'shadow');
-        }
-      });
-    </script>
+    <script src="/js/detail.js" type="module"></script>
   </body>
-</html>
-    
+  </html>
