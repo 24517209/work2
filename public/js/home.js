@@ -1,52 +1,95 @@
-async function fetchJSON(url){
-  const res = await fetch(url);
-  if(!res.ok) throw new Error('Network error');
-  return res.json();
+// Home Page JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    loadEvents();
+});
+
+async function loadEvents() {
+    try {
+        const response = await fetch('/api/events');
+        
+        if (!response.ok) {
+            throw new Error('Failed to load events');
+        }
+        
+        const events = await response.json();
+        displayEvents(events);
+        
+    } catch (error) {
+        console.error('Error loading events:', error);
+        showError(error.message);
+    }
 }
 
-function formatDateTime(iso){
-  const d = new Date(iso);
-  return d.toLocaleString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  });
+function displayEvents(events) {
+    const eventsContainer = document.getElementById('events');
+    const loadingElement = document.getElementById('loading');
+    
+    // Hide loading
+    loadingElement.style.display = 'none';
+    
+    if (events.length === 0) {
+        eventsContainer.innerHTML = '<p class="no-events">No upcoming events found.</p>';
+        return;
+    }
+    
+    // Filter to show only upcoming events
+    const upcomingEvents = events.filter(event => event.status === 'upcoming');
+    
+    if (upcomingEvents.length === 0) {
+        eventsContainer.innerHTML = '<p class="no-events">No upcoming events found.</p>';
+        return;
+    }
+    
+    eventsContainer.innerHTML = upcomingEvents.map(event => createEventCard(event)).join('');
 }
 
-function createEventCard(e){
-  const percent = e.fundGoal > 0 ? Math.min(100, Math.round((Number(e.fundRaised||0)/Number(e.fundGoal))*100)) : 0;
-  const priceText = e.isFree ? 'Free' : `Ticket $${Number(e.ticketPrice).toFixed(2)}`;
-  const el = document.createElement('div');
-  el.className = 'card';
-  el.innerHTML = `
-    <div class="row"><span class="pill">${e.categoryName||'Other'}</span><span class="badge">${e.city||''}</span></div>
-    <h3>${e.name}</h3>
-    <p>${e.descriptionShort||''}</p>
-    <div class="row"><span>${formatDateTime(e.startDateTime)}</span> - <span>${formatDateTime(e.endDateTime)}</span></div>
-    <div class="row"><span>${priceText}</span></div>
-    <div class="progress"><span style="width:${percent}%"></span></div>
-    <div class="row"><small>Fundraising Progress: ${percent}%</small></div>
-    <div class="actions">
-      <a href="/detail.html?id=${e.id}"><button>View Details</button></a>
-    </div>
-  `;
-  return el;
+function createEventCard(event) {
+    const formattedDate = formatDate(event.date);
+    const description = event.description ? 
+        (event.description.length > 100 ? event.description.substring(0, 100) + '...' : event.description) : 
+        'No description available.';
+    
+    return `
+        <div class="card">
+            <div class="row">
+                <span class="pill">${event.status}</span>
+                <span class="badge">${escapeHtml(event.location)}</span>
+            </div>
+            <h3>${escapeHtml(event.name)}</h3>
+            <p>${escapeHtml(description)}</p>
+            <div class="row">
+                <span><strong>Date:</strong> ${formattedDate}</span>
+            </div>
+            <div class="actions">
+                <a href="event-detail.html?id=${event.id}">
+                    <button>View Details</button>
+                </a>
+            </div>
+        </div>
+    `;
 }
 
-async function init(){
-  try{
-    const events = await fetchJSON('/api/events');
-    const list = document.getElementById('events');
-    list.innerHTML = '';
-    events.forEach(e=>list.appendChild(createEventCard(e)));
-  }catch(err){
-    console.error(err);
-    document.getElementById('events').innerHTML = '<p>Loading failed, please try again later.</p>';
-  }
+function showError(message) {
+    document.getElementById('loading').style.display = 'none';
+    const errorElement = document.getElementById('error');
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
 }
 
-init();
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-AU', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
 
 

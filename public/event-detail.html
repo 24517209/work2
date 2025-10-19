@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - Charity Events</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">Charity Events</h1>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="search.html" class="nav-link">Search Events</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div id="loading" class="loading">Loading event details...</div>
+            <div id="error" class="error" style="display: none;"></div>
+            
+            <div id="event-details" style="display: none;">
+                <div class="event-header">
+                    <h1 id="event-name"></h1>
+                    <div class="event-meta">
+                        <span class="event-date" id="event-date"></span>
+                        <span class="event-location" id="event-location"></span>
+                        <span class="event-status" id="event-status"></span>
+                    </div>
+                </div>
+
+                <div class="event-content">
+                    <div class="event-description">
+                        <h2>About This Event</h2>
+                        <p id="event-description"></p>
+                    </div>
+
+                    <div id="weather-info" class="weather-info" style="display: none;">
+                        <h2>Weather Forecast</h2>
+                        <div class="weather-card">
+                            <div class="weather-icon" id="weather-icon"></div>
+                            <div class="weather-details">
+                                <div class="weather-temp">
+                                    <span id="temp-max"></span>°C / <span id="temp-min"></span>°C
+                                </div>
+                                <div class="weather-desc" id="weather-desc"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="registrations-section">
+                        <h2>Registered Participants</h2>
+                        <div id="registrations-list" class="registrations-list">
+                            <p class="no-registrations">No registrations yet.</p>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="#" id="register-btn" class="btn btn-primary">Register for this Event</a>
+                        <a href="index.html" class="btn btn-secondary">Back to Events</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Charity Events. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/event-detail.js"></script>
+</body>
+</html>

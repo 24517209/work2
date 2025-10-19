@@ -5,23 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Charity Events | Search</title>
     <link rel="stylesheet" href="/styles.css" />
-    <style>
-      /* Force English date format for date inputs */
-      input[type="date"] {
-        direction: ltr;
-      }
-      input[type="date"]::-webkit-calendar-picker-indicator {
-        direction: ltr;
-      }
-    </style>
   </head>
   <body>
     <header class="site-header">
       <div class="container nav">
-        <div class="logo">City Charity</div>
+        <div class="logo">Charity Events</div>
         <nav>
           <a href="/">Home</a>
           <a href="/search.html" class="active">Search Events</a>
+          <a href="/admin/index.html">Admin</a>
         </nav>
       </div>
     </header>
@@ -31,20 +23,22 @@
       <form id="searchForm" class="search-form">
         <div>
           <label>Start Date</label>
-          <input type="date" name="dateFrom" placeholder="MM/DD/YYYY" />
+          <input type="date" name="dateFrom" />
         </div>
         <div>
           <label>End Date</label>
-          <input type="date" name="dateTo" placeholder="MM/DD/YYYY" />
+          <input type="date" name="dateTo" />
         </div>
         <div>
-          <label>City</label>
-          <input type="text" name="city" placeholder="e.g. Sydney" />
+          <label>Location</label>
+          <input type="text" name="location" placeholder="e.g. Sydney" />
         </div>
         <div>
-          <label>Category</label>
-          <select name="categoryId" id="categorySelect">
+          <label>Status</label>
+          <select name="status">
             <option value="">All</option>
+            <option value="upcoming">Upcoming</option>
+            <option value="completed">Completed</option>
           </select>
         </div>
         <div class="full">
@@ -59,31 +53,17 @@
 
       <section>
         <h2>Search Results</h2>
+        <div id="loading" class="loading">Searching...</div>
+        <div id="error" class="error" style="display: none;"></div>
         <div id="results" class="cards"></div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container">© 2025 City Charity</div>
+      <div class="container">© 2025 Charity Events</div>
     </footer>
 
-    <script src="/js/search.js" type="module"></script>
-    <script>
-      // Force English date format for date inputs
-      document.addEventListener('DOMContentLoaded', function() {
-        const dateInputs = document.querySelectorAll('input[type="date"]');
-        dateInputs.forEach(input => {
-          // Set locale to en-US for date formatting
-          input.setAttribute('lang', 'en-US');
-          input.setAttribute('data-format', 'MM/DD/YYYY');
-          
-          // Add event listener to format date display
-          input.addEventListener('focus', function() {
-            this.setAttribute('data-placeholder', 'MM/DD/YYYY');
-          });
-        });
-      });
-    </script>
+    <script src="/js/search.js"></script>
   </body>
   </html>
 

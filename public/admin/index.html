@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Event Management</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .admin-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .admin-nav h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        .admin-nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .admin-nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .admin-nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .admin-nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .event-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+        
+        .event-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .event-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .status-upcoming {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .status-completed {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .event-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .btn-edit {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .btn-edit:hover {
+            background-color: #45a049;
+        }
+        
+        .btn-delete {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .btn-delete:hover {
+            background-color: #da190b;
+        }
+        
+        .add-event-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .btn-add {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        
+        .btn-add:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <nav class="admin-nav">
+            <h1>Event Management</h1>
+            <div class="admin-nav-links">
+                <a href="index.html" class="active">Events</a>
+                <a href="add-event.html">Add Event</a>
+                <a href="../index.html">View Site</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="add-event-section">
+                <a href="add-event.html" class="btn-add">+ Add New Event</a>
+            </div>
+
+            <div id="loading" class="loading">Loading events...</div>
+            <div id="error" class="error" style="display: none;"></div>
+            
+            <div id="events-container" style="display: none;">
+                <h2>All Events</h2>
+                <div id="events-grid" class="events-grid">
+                    <!-- Events will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Charity Events Admin. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/admin-events.js"></script>
+</body>
+</html>

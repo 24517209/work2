@@ -24,5 +24,61 @@ label{display:block;color:var(--muted);font-size:14px;margin-bottom:6px}
 input,select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #2b3566;background:#0e1430;color:var(--text)}
 .progress{height:8px;background:#1d2548;border-radius:999px;overflow:hidden}
 .progress>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0}
-@media (max-width:640px){.search-form{grid-template-columns:1fr}}
+
+/* Loading and Error States */
+.loading{text-align:center;padding:2rem;color:var(--muted)}
+.error{background:rgba(220,53,69,.1);border:1px solid rgba(220,53,69,.3);color:#ff6b6b;padding:1rem;border-radius:8px;margin:1rem 0}
+.success-message{background:rgba(40,167,69,.1);border:1px solid rgba(40,167,69,.3);color:#28a745;padding:1rem;border-radius:8px;margin:1rem 0}
+.no-events{text-align:center;color:var(--muted);padding:2rem}
+
+/* Event Detail Styles */
+.event-header{margin-bottom:2rem}
+.event-header h1{margin-bottom:0.5rem}
+.event-meta{display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0;color:var(--muted)}
+.event-status{display:inline-block;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem;font-weight:bold;text-transform:uppercase}
+.status-upcoming{background:rgba(79,140,255,.15);color:var(--accent);border:1px solid rgba(79,140,255,.3)}
+.status-completed{background:rgba(84,209,182,.15);color:var(--accent2);border:1px solid rgba(84,209,182,.3)}
+
+/* Weather Info */
+.weather-info{margin:2rem 0}
+.weather-card{background:var(--card);border:1px solid #1f274a;border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem}
+.weather-icon{font-size:3rem}
+.weather-temp{font-size:1.5rem;font-weight:bold;color:var(--text)}
+.weather-desc{color:var(--muted)}
+
+/* Registrations */
+.registrations-section{margin:2rem 0}
+.registrations-list{display:flex;flex-direction:column;gap:1rem}
+.registration-item{background:var(--card);border:1px solid #1f274a;border-radius:10px;padding:1rem;display:flex;justify-content:space-between;align-items:center}
+.registration-info h3{margin:0 0 0.25rem 0;color:var(--text)}
+.registration-email,.registration-phone{color:var(--muted);font-size:0.9rem;margin:0.125rem 0}
+.registration-meta{display:flex;flex-direction:column;align-items:flex-end;gap:0.25rem}
+.ticket-count{background:rgba(79,140,255,.15);color:var(--accent);padding:0.25rem 0.5rem;border-radius:12px;font-size:0.8rem}
+.registration-date{color:var(--muted);font-size:0.8rem}
+
+/* Form Styles */
+.form-group{margin-bottom:1.5rem}
+.form-group label{display:block;margin-bottom:0.5rem;font-weight:bold;color:var(--text)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.75rem;border:2px solid #2b3566;border-radius:8px;background:#0e1430;color:var(--text);font-size:1rem}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:100px}
+.error-message{color:#ff6b6b;font-size:0.9rem;margin-top:0.25rem;display:none}
+
+/* Button Styles */
+.btn{padding:0.75rem 1.5rem;border:none;border-radius:8px;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block;text-align:center;transition:all 0.3s}
+.btn-primary{background:var(--accent);color:white}
+.btn-primary:hover{background:#3d7bff}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid #2b3566}
+.btn-secondary:hover{background:rgba(255,255,255,0.1)}
+.btn.disabled{opacity:0.5;cursor:not-allowed}
+
+/* Action Buttons */
+.action-buttons{display:flex;gap:1rem;margin-top:2rem;justify-content:center}
+
+@media (max-width:640px){
+  .search-form{grid-template-columns:1fr}
+  .registration-item{flex-direction:column;align-items:flex-start;gap:0.5rem}
+  .registration-meta{align-items:flex-start}
+  .action-buttons{flex-direction:column}
+}
 

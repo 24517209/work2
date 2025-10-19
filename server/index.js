@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 
 const eventsRouter = require('./routes/events.js');
 const categoriesRouter = require('./routes/categories.js');
+const adminRouter = require('./routes/admin.js');
+const registrationsRouter = require('./routes/registrations.js');
 
 dotenv.config();
 
@@ -17,6 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 // API routes
 app.use('/api/events', eventsRouter);
 app.use('/api/categories', categoriesRouter);
+app.use('/api/admin', adminRouter);
+app.use('/api/registrations', registrationsRouter);
 
 // Static frontend
 const publicDir = path.join(__dirname, '..', 'public');

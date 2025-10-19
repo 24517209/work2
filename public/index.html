@@ -9,10 +9,11 @@
   <body>
     <header class="site-header">
       <div class="container nav">
-        <div class="logo">City Charity</div>
+        <div class="logo">Charity Events</div>
         <nav>
           <a href="/">Home</a>
           <a href="/search.html">Search Events</a>
+          <a href="/admin/index.html">Admin</a>
         </nav>
       </div>
     </header>
@@ -26,16 +27,18 @@
       </section>
 
       <section>
-        <h2>Ongoing / Upcoming Events</h2>
+        <h2>Upcoming Events</h2>
+        <div id="loading" class="loading">Loading events...</div>
+        <div id="error" class="error" style="display: none;"></div>
         <div id="events" class="cards"></div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container">© 2025 City Charity</div>
+      <div class="container">© 2025 Charity Events</div>
     </footer>
 
-    <script src="/js/home.js" type="module"></script>
+    <script src="/js/home.js"></script>
   </body>
   </html>
 
